@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 18px;
+}
+
+.home-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 16px;
+    background-image: url("../assets/homepage-background.jpg");
+    min-height: calc(100vh - 60px);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.home-container .journal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home-container .journal-header h3 {
+    color: rgb(51, 129, 255);
+    font-weight: 300;
+}
+
+.home-container .journal-header .entryText {
+    font-weight: 600;
+    font-size: large;
+}
+
+.home-container .journal-header .new-entry-btn button {
+    background-color: rgb(51, 129, 255);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.home-container .journal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.home-container .journal-grid .journal-card {
+    max-width: 300px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+    border-radius: 10px;
+}
+
+.home-container .journal-grid .journal-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.12);
+}
+
+.home-container .journal-grid .journal-card .card-button {
+    gap: 10px;
+    display: flex;
+}
+
+.home-container .journal-grid .journal-card .card-button button {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.home-container .journal-grid .journal-card .card-button button .icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+.home-container .journal-grid .journal-card .divider {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 10px 0;
+}
