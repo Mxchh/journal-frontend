@@ -34,15 +34,6 @@ body {
     font-size: large;
 }
 
-.home-container .journal-header .new-entry-btn button {
-    background-color: rgb(51, 129, 255);
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
 .home-container .journal-grid {
     display: grid;
 grid-template-columns: repeat(auto-fit, 250px);
