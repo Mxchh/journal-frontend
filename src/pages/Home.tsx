@@ -20,7 +20,6 @@ function Home() {
   const [selectedJournal, setSelectedJournal] = useState<Journal | null>(null);
   const [showEdit, setShowEdit] = useState(false);
 
-
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/journals")
       .then((response) => {
@@ -88,10 +87,12 @@ function Home() {
             <hr className="divider" />
 
             <div className="card-button">
-              <button onClick={()=>{
-                setSelectedJournal(journal);
-                setShowEdit(true);
-              }}>
+              <button
+                onClick={() => {
+                  setSelectedJournal(journal);
+                  setShowEdit(true);
+                }}
+              >
                 <svg
                   className="icon"
                   xmlns="http://www.w3.org/2000/svg"
@@ -166,7 +167,7 @@ function Home() {
         onConfirm={handleDelete}
       />
       {selectedJournal && (
-        <EditJournalPopup 
+        <EditJournalPopup
           journal={selectedJournal}
           isOpen={showEdit}
           onClose={() => {

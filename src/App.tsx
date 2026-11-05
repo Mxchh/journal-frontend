@@ -1,20 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
 import About from "./pages/About";
 import Logout from "./pages/Logout";
 import Home from "./pages/Home";
+import Register from "./pages/Registration";
+import Layout from "./components/Layout";
 
 function App() {
-  return(
-  <BrowserRouter>
-    <Header title="My Journal"></Header>
-
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/logout" element={<Logout />} />
-    </Routes>
-  </BrowserRouter>);
-  }
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/logout" element={<Logout />} />
+        </Route>
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 export default App;
