@@ -3,6 +3,7 @@ import "./Home.css";
 import NewEntryPopup from "../components/NewEntryPopup";
 import DeleteConfirmation from "../components/DeleteConfirmation";
 import EditJournalPopup from "../components/EditJournalPopup";
+import StreakCard from "../components/StreakCard";
 
 interface Journal {
   id: number;
@@ -11,7 +12,11 @@ interface Journal {
   mood: string;
   description: string;
 }
-
+interface StreakProps {
+  current_streak: number;
+  week_progress: number;
+  week_days: boolean[];
+}
 function Home() {
   const [journals, setJournals] = useState<Journal[]>([]);
   const [error, setError] = useState("");
@@ -20,8 +25,45 @@ function Home() {
   const [selectedJournal, setSelectedJournal] = useState<Journal | null>(null);
   const [showEdit, setShowEdit] = useState(false);
 
+  const [streak, setStreak] = useState<StreakProps>({
+    current_streak: 0,
+    week_progress: 0,
+    week_days: [],
+  });
+
+  const username = localStorage.getItem("username");
+  console.log("stored username:", username);
+
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/journals")
+    const fetchStreak = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        const response = await fetch("http://127.0.0.1:8000/api/streak", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const data = await response.json();
+        setStreak(data);
+      } catch (error) {
+        console.error("Something went wrong:", error);
+      }
+    };
+
+    fetchStreak();
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    fetch("http://127.0.0.1:8000/api/journals", {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch journals");
@@ -40,12 +82,14 @@ function Home() {
     if (selectedId === null) return;
 
     try {
+      const token = localStorage.getItem("token");
       const response = await fetch(
         `http://127.0.0.1:8000/api/journals/${selectedId}`,
         {
           method: "DELETE",
           headers: {
             Accept: "application/json",
+            Authorization: `Bearer ${token}`,
           },
         },
       );
@@ -65,16 +109,22 @@ function Home() {
   };
 
   return (
-    <div className="home-container">
+    <div className="background-image">
+      <div className="home-container">
       <div className="journal-header">
         <div className="journal-header_text">
-          <h3>Welcome, Hasnieza!</h3>
+          <h3>Welcome {username}</h3>
           <div className="entryText">
             <p>Your Journal Entries</p>
           </div>
         </div>
         <NewEntryPopup />
       </div>
+      <StreakCard 
+      current_streak={streak.current_streak}
+      week_progress={streak.week_progress}
+      week_days={streak.week_days}
+      />
       <div className="journal-grid">
         {error && <p className="error">error</p>}
 
@@ -176,6 +226,7 @@ function Home() {
           }}
         />
       )}
+      </div>
     </div>
   );
 }

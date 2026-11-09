@@ -7,8 +7,13 @@ function NewEntryPopup() {
   const [title, setTitle] = useState("");
   const [mood, setMood] = useState("");
   const[description, setDescription] = useState("");
+  const token = localStorage.getItem("token");
+
 
   const handleSave = async () => {
+    
+    console.log("Token:", token);
+
     const newEntry = {
       date,title,mood,description
     };
@@ -20,6 +25,7 @@ function NewEntryPopup() {
           headers: {
             "Content-Type": "application/json",
             "Accept": "application/json",
+            "Authorization": `Bearer ${token}`,
           },
           body: JSON.stringify(newEntry),
         }

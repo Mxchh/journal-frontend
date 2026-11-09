@@ -10,12 +10,15 @@ body {
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 25px 16px;
+}
+
+.background-image {
     background-image: url("../assets/homepage-background.jpg");
-    min-height: calc(100vh - 60px);
+    z-index: -1;
     background-size: cover;
     background-position: center;
-    z-index: -1;
+    min-height: calc(100vh - 60px);
 }
 
 .home-container .journal-header {
@@ -36,7 +39,7 @@ body {
 
 .home-container .journal-grid {
     display: grid;
-grid-template-columns: repeat(auto-fit, 250px);
+    grid-template-columns: repeat(auto-fit, 250px);
     gap: 25px;
 
 }
@@ -57,9 +60,9 @@ grid-template-columns: repeat(auto-fit, 250px);
 
 .home-container .journal-grid .journal-card .journal-desc {
     display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .home-container .journal-grid .journal-card .card-button {

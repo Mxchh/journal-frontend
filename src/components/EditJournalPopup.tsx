@@ -37,12 +37,14 @@ useEffect(() => {
             date, title, mood, description
         };
         try {
+          const token = localStorage.getItem('token');
             const response = await fetch(`http://127.0.0.1:8000/api/journals/${journal.id}`,
                 {
                     method: "PUT",
                     headers: {
                         "Content-type": "application/json",
-                        "Accept": "application/json",
+                        Accept: "application/json",
+                        Authorization: `Bearer ${token}`,
                     },
                     body: JSON.stringify(editEntry),
                 }
