@@ -1,0 +1,38 @@
+.app-shell {
+  --theme-primary: #168bff;
+  --theme-primary-dark: #001a2d;
+  --theme-ink: #263648;
+  --theme-surface: #ffffff;
+  --theme-page: #f0f2f5;
+  --sidebar-width: 64px;
+  min-height: 100vh;
+  color: var(--theme-ink);
+  background: var(--theme-page);
+}
+
+.app-shell.sidebar-open {
+  --sidebar-width: 240px;
+}
+
+.app-main {
+  min-width: 0;
+  min-height: 100vh;
+  margin-left: var(--sidebar-width);
+  transition: margin-left 240ms ease;
+}
+
+.app-content {
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .app-shell.sidebar-open {
+    --sidebar-width: 200px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-main {
+    transition: none;
+  }
+}

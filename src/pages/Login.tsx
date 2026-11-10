@@ -28,9 +28,10 @@ export default function Login() {
       if (response.ok) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("username", data.user.username);
+        localStorage.setItem("role", data.user.role)
           const token = localStorage.getItem("token");
   console.log("Token:", token);
-        alert("Login succesfully!");
+        alert("Login successfully!");
         navigate("/");
       } else {
         alert(data.message || "Login failed");
