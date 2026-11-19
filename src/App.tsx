@@ -6,6 +6,7 @@ import Register from "./pages/Registration";
 import Layout from "./components/Layout";
 import Login from "./pages/Login";
 import Statistic from "./pages/Statistics";
+import EditProfile from "./components/EditProfile";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/statistic" element={<Statistic/>}></Route>
+          <Route path="/profile" element={<EditProfile />} />
         </Route>
         <Route path="/register" element={<Register />} />
         <Route path='/login' element={<Login />} />

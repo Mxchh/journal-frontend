@@ -1,0 +1,53 @@
+.profile-menu {
+  position: relative;
+  display: inline-flex;
+}
+
+.profile-trigger {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.profile-trigger:focus-visible {
+  outline: 3px solid var(--theme-primary, #168bff);
+  outline-offset: 3px;
+}
+
+.profile-photo {
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-popup {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 200;
+  min-width: 176px;
+  padding: 6px;
+  border: 1px solid #e6e9ed;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(20 35 50 / 16%);
+}
+
+.profile-popup a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 5px;
+  color: #263648;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.profile-popup a:hover,
+.profile-popup a:focus-visible {
+  background: #f2f5f8;
+  color: var(--theme-primary-dark, #001a2d);
+  outline: none;
+}

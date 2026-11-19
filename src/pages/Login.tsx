@@ -27,10 +27,12 @@ export default function Login() {
 
       if (response.ok) {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("userId", String(data.user.id));
         localStorage.setItem("username", data.user.username);
-        localStorage.setItem("role", data.user.role)
-          const token = localStorage.getItem("token");
-  console.log("Token:", token);
+        localStorage.setItem("userId", String(data.user.id));
+        localStorage.setItem("role", data.user.role);
+        const token = localStorage.getItem("token");
+        console.log("Token:", token);
         alert("Login successfully!");
         navigate("/");
       } else {
@@ -40,9 +42,9 @@ export default function Login() {
       console.error("Something went wrong:", error);
     }
   };
-      return (
-      <div>
-        <div className="journal-image">
+  return (
+    <div>
+      <div className="journal-image">
         <div className="container">
           <div className="box">
             <h2>Login</h2>
@@ -74,7 +76,6 @@ export default function Login() {
           </div>
         </div>
       </div>
-        </div>
-    );
-
+    </div>
+  );
 }

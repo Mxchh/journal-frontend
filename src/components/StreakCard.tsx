@@ -66,10 +66,6 @@ export default function StreakCard({
               : `${7 - week_progress} more entries to reach your weekly goal`}
           </p>
         </div>
-        <div className="streak-message">
-          <h4>✦ One page at a time.</h4>
-          <p>Your next entry keeps the streak going.</p>
-        </div>
       </div>
     </div>
   );

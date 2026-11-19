@@ -26,7 +26,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
           <h2>Journal</h2>
           <nav aria-label="Main navigation">
             <Link to="/">Dashboard</Link>
-            <Link to="/about">About</Link>
+            <Link to="/statistic">Statistic</Link>
           </nav>
           <button className="sidebar-logout" onClick={handleLogout}>Logout</button>
         </div>
